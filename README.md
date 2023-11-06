@@ -7,4 +7,4 @@ Go-Zero 是一个基于 Go 语言的微服务开发框架，提供了一套丰�
 
 该模板包含了一些通用的模块和功能，可以帮助开发者快速搭建起项目的基础架构。
 
-关于该项目可参考(https://github.com/zeromicro/go-zero)[https://github.com/zeromicro/go-zero]
+关于该项目可参考[https://github.com/zeromicro/go-zero](https://github.com/zeromicro/go-zero)
