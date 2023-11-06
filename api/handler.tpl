@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"github.com/zeromicro/go-zero/rest/httpx"
+	"github.com/go-playground/validator/v10"
 	{{.ImportPackages}}
 )
 
@@ -11,6 +12,13 @@ func {{.HandlerName}}(svcCtx *svc.ServiceContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		{{if .HasRequest}}var req types.{{.RequestType}}
 		if err := httpx.Parse(r, &req); err != nil {
+			httpx.ErrorCtx(r.Context(), w, err)
+			return
+		}
+
+		// integrate validator here, otherwise you can remove this block.
+		validate := validator.New()
+		if err := validate.StructCtx(r.Context(), req); err != nil {
 			httpx.ErrorCtx(r.Context(), w, err)
 			return
 		}
